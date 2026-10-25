@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Registro de avisos · San Gabán III</title>
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<header><div class="brand"><span class="symbol">SG<span>3</span></span><div>CH SAN GABÁN III<small>OPERACIÓN Y MANTENIMIENTO</small></div></div><span id="mode" class="badge">Cargando…</span></header>
+<main>
+<div class="intro"><div><p class="eyebrow">GESTIÓN DE MANTENIMIENTO</p><h1>Nuevo aviso</h1><p>Registra una observación y deriva su atención al área responsable.</p></div><div class="session"><span id="account">Sin sesión corporativa</span><button id="login" type="button" class="secondary" hidden>Ingresar con Microsoft</button><button id="logout" type="button" class="secondary" hidden>Cerrar sesión</button></div></div>
+<div id="notice" role="status" aria-live="polite" class="notice">Cargando formulario…</div>
+<form id="form">
+<section class="id-card" aria-labelledby="id-label"><div><label id="id-label" for="aviso">N.º DE AVISO (ID)</label><input id="aviso" value="Sin reservar" readonly aria-describedby="id-help"><p id="id-help">Identificador único del aviso. El número de OT se asigna por separado.</p></div><button id="reserve" type="button">Iniciar y reservar número</button></section>
+<fieldset id="fields" disabled>
+<section class="panel"><h2><span>01</span> Datos del registro</h2><div class="grid three">
+<label>Fecha de registro <b>*</b><input id="fecha" type="date" required></label>
+<label>Área que genera el aviso <b>*</b><select id="area" required></select></label>
+<label>Autor del aviso <b>*</b><select id="autor" required disabled></select></label>
+</div></section>
+<section class="panel"><h2><span>02</span> Ubicación del equipo</h2><p class="hint">Selecciona la unidad, el sistema y el subsistema según la taxonomía.</p><div class="grid">
+<label>Unidad / instalación <b>*</b><select id="unidad" required></select></label>
+<label>Sistema <b>*</b><select id="sistema" required disabled></select></label>
+<label class="wide">Subsistema / equipo <b>*</b><select id="subsistema" required disabled></select></label>
+</div><p class="route" id="route">La ruta del equipo aparecerá aquí.</p></section>
+<section class="panel"><h2><span>03</span> Observaciones encontradas</h2><div class="grid">
+<label>Área responsable <b>*</b><select id="responsable" required></select></label>
+<label id="other-wrap" hidden>Especifica el área <b>*</b><input id="otra" maxlength="255"></label>
+<label class="wide">Título del aviso <b>*</b><input id="titulo" maxlength="255" required placeholder="Ej.: Fuga de aceite en unidad hidráulica"><small>Describe brevemente el trabajo requerido.</small></label>
+<label class="wide">Descripción de lo encontrado <b>*</b><textarea id="descripcion" rows="5" maxlength="12000" required placeholder="Indica qué observaste, dónde y en qué condiciones."></textarea></label>
+<label class="wide">Consecuencia en la operación <b>*</b><input id="consecuencia" maxlength="255" required placeholder="Indica el efecto o riesgo para la operación."></label>
+<label class="wide">Clasificación del aviso <b>*</b><select id="prioridad" required></select></label>
+<label class="wide attachment">Foto o archivo de la observación<input id="files" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.gif,.bmp,.heic,.heif,.tif,.tiff,.doc,.docx,.xls,.xlsx,.xlsm,.ppt,.pptx,.pdf,.mp4,.mov,.avi,.wmv,.m4v,.mp3,.wav,.m4a,.ogg,.aac"><small>Opcional · Hasta 2 archivos · Máximo 100 MB por archivo</small></label>
+</div><ul id="file-list" class="file-list"></ul></section>
+</fieldset>
+<div class="actions"><p>Los campos con <b>*</b> son obligatorios.</p><button type="submit" id="save" disabled>Registrar aviso</button><button id="new" type="button" class="secondary" hidden>Crear otro aviso</button></div>
+</form>
+<section id="result" class="panel result" hidden aria-live="polite"><h2 id="result-title"></h2><p id="result-text"></p><a id="record-link" target="_blank" rel="noopener noreferrer" hidden>Ver registro en SharePoint ↗</a><ul id="result-files"></ul></section>
+<footer>San Gabán III · Registro de avisos <span>N.º de aviso y N.º de OT son independientes.</span></footer>
+</main>
+</body></html>
